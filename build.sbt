@@ -1,6 +1,6 @@
 name         := "slickless"
 organization := "io.underscore"
-version      := "0.3.7-SNAPSHOT"
+version      := "0.3.7-M1"
 scalaVersion := scalaV.v213
 
 crossScalaVersions := Seq(scalaV.v211, scalaV.v212, scalaV.v213)
