@@ -1,1 +1,4 @@
-addSbtPlugin("org.scoverage" % "sbt-scoverage" % "1.6.1")
+import djx.sbt.depts.plugins.{PluginsCollection => pluginCol}
+
+addSbtPlugin(pluginCol.`sbt-scoverage`)
+addSbtPlugin(pluginCol.`sbt-scalafmt`)

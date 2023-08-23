@@ -7,13 +7,32 @@ import shapeless._
 import slickless._
 
 case class Large(
-  a: Int, b: Int, c: Int, d: Int,
-  e: Int, f: Int, g: Int, h: Int,
-  i: Int, j: Int, k: Int, l: Int,
-  m: Int, n: Int, o: Int, p: Int,
-  q: Int, r: Int, s: Int, t: Int,
-  u: Int, v: Int, w: Int, x: Int,
-  y: Int, z: Int
+  a: Int,
+  b: Int,
+  c: Int,
+  d: Int,
+  e: Int,
+  f: Int,
+  g: Int,
+  h: Int,
+  i: Int,
+  j: Int,
+  k: Int,
+  l: Int,
+  m: Int,
+  n: Int,
+  o: Int,
+  p: Int,
+  q: Int,
+  r: Int,
+  s: Int,
+  t: Int,
+  u: Int,
+  v: Int,
+  w: Int,
+  x: Int,
+  y: Int,
+  z: Int
 )
 
 class LargeTable(tag: Tag) extends Table[Large](tag, "large") {
@@ -46,12 +65,12 @@ class LargeTable(tag: Tag) extends Table[Large](tag, "large") {
 
   def * = (
     a :: b :: c :: d ::
-    e :: f :: g :: h ::
-    i :: j :: k :: l ::
-    m :: n :: o :: p ::
-    q :: r :: s :: t ::
-    u :: v :: w :: x ::
-    y :: z :: HNil
+      e :: f :: g :: h ::
+      i :: j :: k :: l ::
+      m :: n :: o :: p ::
+      q :: r :: s :: t ::
+      u :: v :: w :: x ::
+      y :: z :: HNil
   ).mappedWith(Generic[Large])
 }
 
@@ -66,13 +85,7 @@ class LargeSpec extends slickless.Spec {
       val db = Database.forConfig("h2")
 
       val large = Large(
-         1,  2,  3,  4, 
-         5,  6,  7,  8, 
-         9, 10, 11, 12, 
-        13, 14, 15, 16, 
-        17, 18, 19, 20, 
-        21, 22, 23, 24, 
-        25, 26
+        1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26
       )
 
       val action = for {

@@ -1,15 +1,16 @@
 name         := "slickless"
 organization := "io.underscore"
 version      := "0.3.7-SNAPSHOT"
-scalaVersion := "2.13.1"
+scalaVersion := scalaV.v213
 
-crossScalaVersions := Seq("2.11.12", "2.12.10", "2.13.1")
+crossScalaVersions := Seq(scalaV.v211, scalaV.v212, scalaV.v213)
 
 licenses += ("Apache-2.0", url("http://apache.org/licenses/LICENSE-2.0"))
 
 scalacOptions ++= Seq(
   "-deprecation",
-  "-encoding", "UTF-8",
+  "-encoding",
+  "UTF-8",
   "-unchecked",
   "-feature",
   "-language:implicitConversions",
@@ -19,13 +20,13 @@ scalacOptions ++= Seq(
   "-Xfatal-warnings"
 )
 
-libraryDependencies ++= Seq(
-  "com.typesafe.slick" %% "slick"           % "3.3.2",
-  "com.chuusai"        %% "shapeless"       % "2.3.3",
-  "org.scalatest"      %% "scalatest"       % "3.2.0-M4"   % "test",
-  "com.h2database"      % "h2"              % "1.4.200" % "test",
-  "ch.qos.logback"      % "logback-classic" % "1.2.9"   % "test"
-)
+libraryDependencies ++= libScalax.`slick`.value
+libraryDependencies ++= libScalax.`shapeless`.value
+libraryDependencies ++= libScalax.`h2`.value
+libraryDependencies ++= libScalax.`scalatest`.value
+libraryDependencies ++= Seq("ch.qos.logback" % "logback-classic" % "1.2.9" % "test")
+
+scalafmtOnCompile := true
 
 pomExtra in Global := {
   <url>https://github.com/underscoreio/slickless</url>
@@ -53,3 +54,4 @@ pomExtra in Global := {
   </developers>
 }
 
+Global / onChangedBuildSource := ReloadOnSourceChanges

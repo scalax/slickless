@@ -8,7 +8,7 @@ import scala.concurrent.ExecutionContext.Implicits.global
 class HListShapeSpec extends Spec {
 
   class Users(tag: Tag) extends Table[Long :: String :: HNil](tag, "users") {
-    def id    = column[Long]( "id", O.PrimaryKey, O.AutoInc )
+    def id    = column[Long]("id", O.PrimaryKey, O.AutoInc)
     def email = column[String]("email")
 
     def * = id :: email :: HNil
@@ -27,7 +27,7 @@ class HListShapeSpec extends Spec {
         _   <- users.schema.drop
       } yield ans
 
-      whenReady(db.run(action)) { _ should equal (1L :: "dave@example.com" :: HNil) }
+      whenReady(db.run(action)) { _ should equal(1L :: "dave@example.com" :: HNil) }
     }
   }
 }

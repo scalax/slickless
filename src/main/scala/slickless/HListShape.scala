@@ -2,12 +2,12 @@ package slickless
 
 import scala.annotation.tailrec
 import scala.reflect.ClassTag
-import shapeless.{ HList, ::, HNil, Generic }
+import shapeless.{::, Generic, HList, HNil}
 import slick.ast.MappedScalaType
-import slick.lifted.{ Shape, ShapeLevel, FlatShapeLevel, MappedProductShape, MappedProjection }
+import slick.lifted.{FlatShapeLevel, MappedProductShape, MappedProjection, Shape, ShapeLevel}
 
-final class HListShape[L <: ShapeLevel, M <: HList, U <: HList : ClassTag, P <: HList]
-    (val shapes: Seq[Shape[_<: ShapeLevel, _, _, _]]) extends MappedProductShape[L, HList, M, U, P] {
+final class HListShape[L <: ShapeLevel, M <: HList, U <: HList: ClassTag, P <: HList](val shapes: Seq[Shape[_ <: ShapeLevel, _, _, _]])
+    extends MappedProductShape[L, HList, M, U, P] {
 
   def buildValue(elems: IndexedSeq[Any]) =
     elems.foldRight(HNil: HList)(_ :: _)
@@ -38,10 +38,15 @@ trait HListShapeImplicits {
     new HListShape(Nil)
 
   implicit def hconsShape[
-    L <: ShapeLevel, L1 <: ShapeLevel, L2 <: ShapeLevel, 
-    M1, M2 <: HList,
-    U1, U2 <: HList,
-    P1, P2 <: HList
+    L <: ShapeLevel,
+    L1 <: ShapeLevel,
+    L2 <: ShapeLevel,
+    M1,
+    M2 <: HList,
+    U1,
+    U2 <: HList,
+    P1,
+    P2 <: HList
   ](implicit
     s1: Shape[L1, M1, U1, P1],
     s2: HListShape[L2, M2, U2, P2]
@@ -50,9 +55,12 @@ trait HListShapeImplicits {
 
   implicit class HListShapeOps[T <: HList](hlist: T) {
     def mappedWith[
-      R: ClassTag, U <: HList, L <: FlatShapeLevel, P
-    ](gen: Generic.Aux[R, U])(
-      implicit shape: Shape[L, T, U, P]
+      R: ClassTag,
+      U <: HList,
+      L <: FlatShapeLevel,
+      P
+    ](gen: Generic.Aux[R, U])(implicit
+      shape: Shape[L, T, U, P]
     ) = new MappedProjection[R, U](
       shape.toNode(hlist),
       MappedScalaType.Mapper(

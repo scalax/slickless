@@ -1,6 +1,6 @@
 package slickless
 
-import shapeless.{HNil, Generic}
+import shapeless.{Generic, HNil}
 import slick.jdbc.H2Profile.api._
 
 import scala.concurrent.ExecutionContext.Implicits.global
