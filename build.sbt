@@ -1,5 +1,5 @@
 name         := "slickless"
-organization := "io.underscore"
+organization := "net.scalax"
 version      := "0.3.7-M1"
 scalaVersion := scalaV.v213
 
