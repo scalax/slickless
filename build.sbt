@@ -1,6 +1,6 @@
 name         := "slickless"
 organization := "net.scalax"
-version      := "0.3.7-M1"
+version      := "0.3.7-M7"
 scalaVersion := scalaV.v213
 
 crossScalaVersions := Seq(scalaV.v211, scalaV.v212, scalaV.v213)
@@ -24,7 +24,7 @@ libraryDependencies ++= libScalax.`slick`.value
 libraryDependencies ++= libScalax.`shapeless`.value
 libraryDependencies ++= libScalax.`h2`.value
 libraryDependencies ++= libScalax.`scalatest`.value
-libraryDependencies ++= Seq("ch.qos.logback" % "logback-classic" % "1.2.9" % "test")
+libraryDependencies ++= libScalax.`logback-classic`.value.map(_ % Test)
 
 scalafmtOnCompile := true
 
