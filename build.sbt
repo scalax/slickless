@@ -1,9 +1,9 @@
 name         := "slickless"
-organization := "net.scalax"
-version      := "0.3.7-M7"
+organization := "net.scalax.slickless"
+version      := "0.3.8-M1"
 scalaVersion := scalaV.v213
 
-crossScalaVersions := Seq(scalaV.v211, scalaV.v212, scalaV.v213)
+crossScalaVersions := Seq(scalaV.v212, scalaV.v213, scalaV.v3)
 
 licenses += ("Apache-2.0", url("http://apache.org/licenses/LICENSE-2.0"))
 
@@ -15,25 +15,25 @@ scalacOptions ++= Seq(
   "-feature",
   "-language:implicitConversions",
   "-language:postfixOps",
-  "-Ywarn-dead-code",
-  "-Xlint",
   "-Xfatal-warnings"
 )
 
 libraryDependencies ++= libScalax.`slick`.value
 libraryDependencies ++= libScalax.`shapeless`.value
-libraryDependencies ++= libScalax.`h2`.value
-libraryDependencies ++= libScalax.`scalatest`.value
+libraryDependencies ++= libScalax.`h2`.value.map(_ % Test)
+libraryDependencies ++= libScalax.`scalatest`.value.map(_ % Test)
 libraryDependencies ++= libScalax.`logback-classic`.value.map(_ % Test)
 
 scalafmtOnCompile := true
 
-pomExtra in Global := {
-  <url>https://github.com/underscoreio/slickless</url>
+Global / onChangedBuildSource := ReloadOnSourceChanges
+
+ThisBuild / pomExtra := {
+  <url>https://github.com/scalax/slickless</url>
   <scm>
-    <connection>scm:git:github.com/underscoreio/slickless</connection>
-    <developerConnection>scm:git:git@github.com:underscoreio/slickless</developerConnection>
-    <url>github.com/underscoreio/slickless</url>
+    <connection>scm:git:github.com/scalax/slickless</connection>
+    <developerConnection>scm:git:git@github.com:scalax/slickless</developerConnection>
+    <url>github.com/scalax/slickless</url>
   </scm>
   <developers>
     <developer>
@@ -51,7 +51,18 @@ pomExtra in Global := {
       <name>Miles Sabin</name>
       <url>http://twitter.com/milessabin</url>
     </developer>
+    <developer>
+      <id>djx314</id>
+      <name>djx314</name>
+      <url>https://github.com/djx314</url>
+    </developer>
   </developers>
 }
 
-Global / onChangedBuildSource := ReloadOnSourceChanges
+ThisBuild / versionScheme := Some("early-semver")
+
+ThisBuild / publishTo := {
+  val nexus = "https://s01.oss.sonatype.org/"
+  if (isSnapshot.value) Some("snapshots" at nexus + "content/repositories/snapshots")
+  else Some("releases" at nexus + "service/local/staging/deploy/maven2")
+}

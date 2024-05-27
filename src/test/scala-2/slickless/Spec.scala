@@ -1,4 +1,4 @@
-package slickless
+package net.scalax.slickless
 
 import org.scalatest.concurrent.ScalaFutures
 import org.scalatest.time.{Millis, Seconds, Span}

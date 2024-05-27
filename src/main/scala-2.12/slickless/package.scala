@@ -1,1 +1,3 @@
-package object slickless extends HListShapeImplicits
+package net.scalax.slickless
+
+package object compat extends impl.HListShapeImplicits

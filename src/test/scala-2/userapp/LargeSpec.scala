@@ -4,7 +4,8 @@ package userapp
 
 import slick.jdbc.H2Profile.api._
 import shapeless._
-import slickless._
+import net.scalax.slickless._
+import compat._
 
 case class Large(
   a: Int,
@@ -76,7 +77,7 @@ class LargeTable(tag: Tag) extends Table[Large](tag, "large") {
 
 import scala.concurrent.ExecutionContext.Implicits.global
 
-class LargeSpec extends slickless.Spec {
+class LargeSpec extends net.scalax.slickless.Spec {
 
   "slick tables with >22 column mappings" - {
     "should support inserts and selects" in {

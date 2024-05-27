@@ -1,4 +1,4 @@
-package slickless
+package net.scalax.slickless.compat.impl
 
 import scala.annotation.tailrec
 import scala.reflect.ClassTag

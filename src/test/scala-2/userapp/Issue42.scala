@@ -1,8 +1,9 @@
-import slickless.Spec
+import net.scalax.slickless
 import shapeless.{Generic, HNil}
 import slick.jdbc.H2Profile.api._
 import slickless._
 import scala.concurrent.ExecutionContext.Implicits.global
+import compat._
 
 class Issue42 extends Spec {
 
