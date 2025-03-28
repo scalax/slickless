@@ -8,7 +8,7 @@ scalaVersion := scalaV.v213
 
 crossScalaVersions := Seq(scalaV.v212, scalaV.v213, scalaV.v3)
 
-addCommandAlias("pub", "; clean; +publishSigned; snoatypeZipPackage")
+addCommandAlias("pub", "; clean; +publishSigned; snoatypeZipPackage;")
 
 licenses += ("Apache-2.0", url("http://apache.org/licenses/LICENSE-2.0"))
 
