@@ -1,9 +1,14 @@
+publishTo := sonatypePublishToBundle.value
+
 name         := "slickless"
 organization := "net.scalax.slickless"
-version      := "0.3.8-M1"
+version      := "0.3.8-M2"
+
 scalaVersion := scalaV.v213
 
 crossScalaVersions := Seq(scalaV.v212, scalaV.v213, scalaV.v3)
+
+addCommandAlias("pub", "; clean; +publishSigned; snoatypeZipPackage")
 
 licenses += ("Apache-2.0", url("http://apache.org/licenses/LICENSE-2.0"))
 
@@ -60,9 +65,3 @@ ThisBuild / pomExtra := {
 }
 
 ThisBuild / versionScheme := Some("early-semver")
-
-ThisBuild / publishTo := {
-  val nexus = "https://s01.oss.sonatype.org/"
-  if (isSnapshot.value) Some("snapshots" at nexus + "content/repositories/snapshots")
-  else Some("releases" at nexus + "service/local/staging/deploy/maven2")
-}
