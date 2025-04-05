@@ -1,6 +1,4 @@
 /.idea/
-/sbt.bat
-/sbt-launch.jar
 /.metals/
 /.vscode/
 /.bsp/
@@ -8,4 +6,7 @@
 target/
 metals.sbt
 /sonatype.sbt
-/java.bat
+/java_with_opts.bat
+/sbtw.bat
+/sbt.bat
+/sbtw-sbt-launch-bundle/
