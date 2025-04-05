@@ -3,7 +3,7 @@
 /.vscode/
 /.bsp/
 .bloop/
-target/
+**/target/
 metals.sbt
 /sonatype.sbt
 /java_with_opts.bat
